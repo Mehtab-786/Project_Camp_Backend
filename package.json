@@ -1,0 +1,16 @@
+{
+  "name": "backend_udemy_first_project",
+  "version": "1.0.0",
+  "description": "Backend Project starting out from udemy",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node index.js"
+  },
+  "author": "Mehtab Hussain",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "3.7.4"
+  }
+}
