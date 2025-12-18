@@ -1,4 +1,6 @@
 import { model, Schema } from 'mongoose';
+import bcrypt from 'bcrypt';
+const HASH_SALT_ROUND = 10;
 
 const userSchema = new Schema({
     userName: {
@@ -54,5 +56,18 @@ const userSchema = new Schema({
         type: Date
     }
 }, { timestamps: true });
+
+
+userSchema.pre('save', async function (next) {
+    //use normal fn. because arrow fn. doesn't have this context
+    if (!this.isModified(this.password)) return next(); 
+    //checking if password is changing or not
+
+    this.password = await bcrypt.hash(this.password, HASH_SALT_ROUND);
+    next();
+
+})
+
+
 
 export const UserModel = model('User', userSchema)
